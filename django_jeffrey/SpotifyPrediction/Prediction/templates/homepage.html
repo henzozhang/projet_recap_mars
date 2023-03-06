@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+    <form class = "square" method="POST">
+        {% csrf_token %}
+        <img class = 'image' src="{% static "images/casque.jpg" %}" alt = 'connexion'/>
+        <h1>Prédis ta chanson !</h1>
+        {% for field in predict%}
+            <div class ='quest'>
+                {{field.label}}        
+                {{field}}
+            </div>
+        {% endfor %}
+                            
+        <button class='button' type="submit">Valider</button>
+
+    </form>
+{% else %}
+    <img class= "music" src="{% static "images/Music.png" %}" alt="logo">
+{% endif %}
+{% endblock content %}
